@@ -77,30 +77,36 @@ const Body = ({ heading1, img, heading2, heading3, cardsData }) => {
 
   return (
     <div>
-      <h1 className="px-10 py-5 text-2xl font-bold">{heading1}</h1>
+      <h1 className="px-10 py-5 mt-20 text-2xl font-bold">{heading1}</h1>
       <Slider {...settings} className="px-20 my-auto">
         {img.map((element) => {
           return <ImageCard key={element.imageId} img={element.imageId} />;
         })}
       </Slider>
 
-      <h1 className="px-10 py-5 text-2xl font-bold">{heading2}</h1>
+      <h1 className="px-10 my-7 py-5 text-2xl font-bold">{heading2}</h1>
       <Slider {...settings1} className="px-20 my-auto">
         {filteredCardsData.map((res) => {
           return <FirstCard resData={res} key={res.info.id} />;
         })}
       </Slider>
 
-      <h1 className="px-10 py-5 text-2xl font-bold">{heading3}</h1>
+      <h1 className="px-10 py-5 my-10 text-2xl font-bold">{heading3}</h1>
       <div className="flex justify-between">
         <Filter_search searchData={searchData} sort={sort} cardFilter={cardFilter} />
       </div>
 
-      <div className="flex justify-evenly flex-wrap px-10 m-auto my-10 gap-10 w-[90%]">
+      <div className="flex justify-center flex-wrap px-10 m-auto my-10 gap-5 w-[90%]">
         {filteredCardsData.map((e) => {
           return <FirstCard resData={e} key={e.info.id} />;
         })}
       </div>
+      <div className="flex justify-center flex-wrap px-10 m-auto my-10 gap-5 w-[90%]">
+        {filteredCardsData.map((e) => {
+          return <FirstCard resData={e} key={e.info.id} />;
+        })}
+      </div>
+
 
       <OrderPage />
     </div>

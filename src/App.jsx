@@ -8,6 +8,8 @@ import Body from "./components/Body";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Contact from "./components/ContactPage";
 import AuthPage from "./components/Login";
+import Footer from "./components/Footer";
+import About from "./components/About";
 
 function App() {
   // Heading first
@@ -49,8 +51,10 @@ function App() {
             }
           /> 
           <Route path="/contact" element={<Contact/>}></Route>
-          <Route path="/sig-in" element={<AuthPage/>}></Route> 
+          <Route path="/sign-in" element={<AuthPage/>}></Route> 
+          <Route path="/about" element={<About/>}></Route> 
         </Routes>
+        <Footer/>
       </Router>
     </>
   );

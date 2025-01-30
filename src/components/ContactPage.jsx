@@ -12,9 +12,9 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-gray-600 py-10">
-      <div className="bg-white shadow-md rounded-lg p-8 w-full max-w-lg">
-        <h1 className="text-2xl font-bold text-gray-800 text-center mb-6">
+    <div className=" flex justify-center items-center mt-16 bg-gray-200 py-5">
+      <div className="bg-white shadow-md rounded-lg p-8 w-full max-w-md">
+        <h1 className="text-2xl font-bold text-gray-800 text-center mb-4">
           Contact Us
         </h1>
         <form onSubmit={handleSubmit} className="space-y-6">
