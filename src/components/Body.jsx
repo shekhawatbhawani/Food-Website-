@@ -2,16 +2,13 @@ import React, { useState } from 'react';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
-import ImageCard from "./ImageCard"
-import FirstCard from "./FirstCard"
-import Filter_search from "./FilterSearch"
-
+import ImageCard from "./ImageCard";
+import FirstCard from "./FirstCard";
+import Filter_search from "./FilterSearch";
 import OrderPage from './OrderPage';
-
 
 const Body = ({ heading1, img, heading2, heading3, cardsData }) => {
   const [filteredCardsData, setFilteredCardsData] = useState(cardsData);
-
 
   const settings = {
     dots: false,
@@ -20,6 +17,29 @@ const Body = ({ heading1, img, heading2, heading3, cardsData }) => {
     slidesToShow: 5,
     slidesToScroll: 1,
     autoplay: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   const settings1 = {
@@ -29,6 +49,29 @@ const Body = ({ heading1, img, heading2, heading3, cardsData }) => {
     autoplay: true,
     slidesToShow: 4,
     slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   // Function to filter cards by rating
@@ -73,40 +116,32 @@ const Body = ({ heading1, img, heading2, heading3, cardsData }) => {
     }
   };
 
-
-
   return (
-    <div>
-      <h1 className="px-10 py-5 mt-20 text-2xl font-bold">{heading1}</h1>
-      <Slider {...settings} className="px-20 my-auto">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 className="text-2xl font-bold mt-20 mb-5">{heading1}</h1>
+      <Slider {...settings} className="my-auto">
         {img.map((element) => {
           return <ImageCard key={element.imageId} img={element.imageId} />;
         })}
       </Slider>
 
-      <h1 className="px-10 my-7 py-5 text-2xl font-bold">{heading2}</h1>
-      <Slider {...settings1} className="px-20 my-auto">
+      <h1 className="text-2xl font-bold my-7">{heading2}</h1>
+      <Slider {...settings1} className="my-auto">
         {filteredCardsData.map((res) => {
           return <FirstCard resData={res} key={res.info.id} />;
         })}
       </Slider>
 
-      <h1 className="px-10 py-5 my-10 text-2xl font-bold">{heading3}</h1>
+      <h1 className="text-2xl font-bold my-10">{heading3}</h1>
       <div className="flex justify-between">
         <Filter_search searchData={searchData} sort={sort} cardFilter={cardFilter} />
       </div>
 
-      <div className="flex justify-center flex-wrap px-10 m-auto my-10 gap-5 w-[90%]">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 my-10">
         {filteredCardsData.map((e) => {
           return <FirstCard resData={e} key={e.info.id} />;
         })}
       </div>
-      <div className="flex justify-center flex-wrap px-10 m-auto my-10 gap-5 w-[90%]">
-        {filteredCardsData.map((e) => {
-          return <FirstCard resData={e} key={e.info.id} />;
-        })}
-      </div>
-
 
       <OrderPage />
     </div>
